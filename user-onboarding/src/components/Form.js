@@ -40,7 +40,7 @@ export default function Form( props ){
                 Terms of Service:
                 <input type="checkbox" name="terms" value={ values.terms } onChange={ onChange } />
             </label>
-            <button disabled={ disabled }>Submit</button>
+            <button name = 'submit' disabled={ disabled }>Submit</button>
 
             <div className="errors">
                 <div>{ errors.first_name }</div>
