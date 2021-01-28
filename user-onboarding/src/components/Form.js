@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Form( props ){
     const { values, submit, change, disabled, errors } = props;
-
+    console.log('Form ', disabled)
     const onSubmit = event => {
         event.preventDefault();
         submit();
@@ -15,9 +15,11 @@ export default function Form( props ){
     }
 
     return(
-
+    <div>
+        <h2>User Onboarding</h2>
+        
         <form onSubmit={ onSubmit } className="info-form">
-            <h2>User Onboarding</h2>
+            
             <label>
                 First Name: 
                 <input type="text" name="first_name" value={ values.first_name } onChange={ onChange } />
@@ -48,5 +50,6 @@ export default function Form( props ){
                 <div>{ errors.terms }</div>
             </div>
         </form>
+    </div>
     );
 } 

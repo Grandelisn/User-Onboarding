@@ -2,14 +2,28 @@
   text-align: center;
 }
 
-p{
-  color: red,
-}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
-
+.user-stuff{
+  color: red;
+  display: flex;
+  border: 1px solid black;
+  justify-content: space-around;
+  flex-flow: row wrap;
+  margin-top: 5em;
+}
+.user-card{
+  border: 1px solid black;
+  margin: 1em;
+  padding: 1em;
+}
+.info-form{
+  display: flex;
+  justify-content: space-around;
+  margin: 2em;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

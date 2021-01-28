@@ -31,11 +31,12 @@ function App() {
   const [dis, setDis] = useState(initDis);
 
   const fetchUser = () => {
-    axios.get(`https://reqres.in/api/users`).then(res => setUser(res.data.data)).catch(err => console.log('fetchUser get error: ', err));
+    axios.get(`https://reqres.in/api/users`).then(res => setUser(res.data.data))
+    .catch(err => console.log('fetchUser get error: ', err));
   }
   const addUser = newUser => {
     axios.post(`https://reqres.in/api/users`, newUser).then(res => setUser([res.data, ...user]))
-    .catch(err => console.log('addUser post error: ', err)).finally(setFormVal(initFormVal));
+    .catch(err => console.log('addUser post error: ', err)).then(setFormVal(initFormVal));
   }
   const input = (name, val) => {
     yup.reach(schema, name).validate(val).then(()=> setFormErr({...formErr, [name]: ''}))
@@ -66,7 +67,7 @@ function App() {
         errors = {formErr}
         disabled = {dis}
       />
-      <div className = 'userStuff'>
+      <div className = 'user-stuff'>
         {user.map(x => {return <Users info = {x}/>})}
       </div>
     </div>
