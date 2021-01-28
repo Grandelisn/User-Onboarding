@@ -7,15 +7,15 @@ import * as yup from "yup";
 import schema from "./validation/formSchema";
 import axios from "axios";
 const initFormVal = {
-  fName: '',
-  sName: '',
+  first_name: '',
+  last_name: '',
   email: '',
   password: '',
   terms: false,
 }
 const initFormErr = {
-  fName: '',
-  lName: '',
+  first_name: '',
+  last_name: '',
   email: '',
   password: '',
   terms: false,
@@ -44,8 +44,8 @@ function App() {
   }
   const formSub = () => {
     const newUser = {
-      fName: formVal.fName.trim(),
-      lName: formVal.lName.trim(),
+      first_name: formVal.first_name.trim(),
+      last_name: formVal.last_name.trim(),
       email: formVal.email.trim(),
       password: formVal.password.trim(),
       terms: formVal.terms,
@@ -66,8 +66,8 @@ function App() {
         errors = {formErr}
         disabled = {dis}
       />
-      <div>
-        {user.map(x => {return <Users info = {user}/>})}
+      <div className = 'userStuff'>
+        {user.map(x => {return <Users info = {x}/>})}
       </div>
     </div>
   );

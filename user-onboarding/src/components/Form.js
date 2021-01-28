@@ -20,11 +20,11 @@ export default function Form( props ){
             <h2>User Onboarding</h2>
             <label>
                 First Name: 
-                <input type="text" name="fName" value={ values.fName } onChange={ onChange } />
+                <input type="text" name="first_name" value={ values.first_name } onChange={ onChange } />
             </label>
             <label>
                 Last Name: 
-                <input type="text" name="lName" value={ values.lName } onChange={ onChange } />
+                <input type="text" name="last_name" value={ values.last_name } onChange={ onChange } />
             </label>
             <label>
                 Email: 
@@ -41,8 +41,8 @@ export default function Form( props ){
             <button disabled={ disabled }>Submit</button>
 
             <div className="errors">
-                <div>{ errors.fname }</div>
-                <div>{ errors.lname }</div>
+                <div>{ errors.first_name }</div>
+                <div>{ errors.last_name }</div>
                 <div>{ errors.email }</div>
                 <div>{ errors.password }</div>
                 <div>{ errors.terms }</div>
