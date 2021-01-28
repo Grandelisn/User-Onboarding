@@ -7,15 +7,15 @@ import * as yup from "yup";
 import schema from "./validation/formSchema";
 import axios from "axios";
 const initFormVal = {
-  fName: '',
-  sName: '',
+  first_name: '',
+  last_name: '',
   email: '',
   password: '',
   terms: false,
 }
 const initFormErr = {
-  fName: '',
-  lName: '',
+  first_name: '',
+  last_name: '',
   email: '',
   password: '',
   terms: false,
@@ -31,11 +31,12 @@ function App() {
   const [dis, setDis] = useState(initDis);
 
   const fetchUser = () => {
-    axios.get(`https://reqres.in/api/users`).then(res => setUser(res.data.data)).catch(err => console.log('fetchUser get error: ', err));
+    axios.get(`https://reqres.in/api/users`).then(res => setUser(res.data.data))
+    .catch(err => console.log('fetchUser get error: ', err));
   }
   const addUser = newUser => {
     axios.post(`https://reqres.in/api/users`, newUser).then(res => setUser([res.data, ...user]))
-    .catch(err => console.log('addUser post error: ', err)).finally(setFormVal(initFormVal));
+    .catch(err => console.log('addUser post error: ', err)).then(setFormVal(initFormVal));
   }
   const input = (name, val) => {
     yup.reach(schema, name).validate(val).then(()=> setFormErr({...formErr, [name]: ''}))
@@ -44,8 +45,8 @@ function App() {
   }
   const formSub = () => {
     const newUser = {
-      fName: formVal.fName.trim(),
-      lName: formVal.lName.trim(),
+      first_name: formVal.first_name.trim(),
+      last_name: formVal.last_name.trim(),
       email: formVal.email.trim(),
       password: formVal.password.trim(),
       terms: formVal.terms,
@@ -66,8 +67,8 @@ function App() {
         errors = {formErr}
         disabled = {dis}
       />
-      <div>
-        {user.map(x => {return <Users info = {user}/>})}
+      <div className = 'user-stuff'>
+        {user.map(x => {return <Users info = {x}/>})}
       </div>
     </div>
   );
